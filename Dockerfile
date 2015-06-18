@@ -27,5 +27,6 @@ RUN sed -ri 's/^PermitRootLogin.*$/PermitRootLogin yes/g' /etc/ssh/sshd_config
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD run /usr/local/bin/
 RUN chmod +x /usr/local/bin/run
+RUN echo "$PUBLIC_KEY" >> /home/ubuntu/.ssh/authorized_keys
 EXPOSE 22 80
 CMD ["/usr/local/bin/run"]
