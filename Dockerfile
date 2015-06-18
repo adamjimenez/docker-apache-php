@@ -1,10 +1,6 @@
 FROM ubuntu:14.04
 MAINTAINER Adam Jimenez <adam.jimenez@gmail.com>
 
-#VOLUME ["/var/www"]
-RUN mkdir -p /var/www
-RUN chown -R ubuntu:ubuntu /home/ubuntu
-
 #RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
@@ -18,6 +14,10 @@ RUN chown -R ubuntu:ubuntu /home/ubuntu
 RUN sudo adduser ubuntu sudo
 USER ubuntu
 WORKDIR /home/ubuntu
+
+#VOLUME ["/var/www"]
+RUN mkdir -p /var/www
+RUN chown -R ubuntu:ubuntu /home/ubuntu
 
 RUN mkdir -p /home/ubuntu/.ssh
 RUN chmod 700 /home/ubuntu/.ssh
