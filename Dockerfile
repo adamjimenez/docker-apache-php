@@ -11,15 +11,18 @@ RUN mkdir -p /var/log/supervisor
 
 RUN useradd ubuntu -d /home/ubuntu -m -U
 RUN chown -R ubuntu:ubuntu /home/ubuntu
-RUN sudo adduser ubuntu sudo
+#RUN sudo adduser ubuntu sudo
+#RUN echo ubuntu:ubuntu | chpasswd
+RUN echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/ubuntu
+RUN chmod 0440 /etc/sudoers.d/ubuntu
 
 #VOLUME ["/var/www"]
 RUN mkdir -p /var/www
 RUN chown -R ubuntu:ubuntu /home/ubuntu
 
 RUN mkdir -p /home/ubuntu/.ssh
-RUN chmod 700 /home/ubuntu/.ssh
 RUN chown ubuntu:ubuntu /home/ubuntu/.ssh
+RUN chmod 700 /home/ubuntu/.ssh
 
 ADD apache_default /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
