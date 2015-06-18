@@ -1,7 +1,9 @@
 FROM ubuntu:14.04
 MAINTAINER Adam Jimenez <adam.jimenez@gmail.com>
 
-VOLUME ["/var/www"]
+#VOLUME ["/var/www"]
+RUN mkdir -p /var/www
+RUN chown -R ubuntu:ubuntu /home/ubuntu
 
 #RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
@@ -11,8 +13,12 @@ RUN apt-get install -y openssh-server apache2 supervisor php5 php5-cli libapache
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 
-RUN useradd ubuntu -d /home/ubuntu
+RUN useradd ubuntu -d /home/ubuntu -m -U
+RUN chown -R ubuntu:ubuntu /home/ubuntu
 RUN sudo adduser ubuntu sudo
+USER ubuntu
+WORKDIR /home/ubuntu
+
 RUN mkdir -p /home/ubuntu/.ssh
 RUN chmod 700 /home/ubuntu/.ssh
 RUN chown ubuntu:ubuntu /home/ubuntu/.ssh
