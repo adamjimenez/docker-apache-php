@@ -12,6 +12,7 @@ RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 
 RUN useradd ubuntu -d /home/ubuntu
+RUN sudo adduser ubuntu sudo
 RUN mkdir -p /home/ubuntu/.ssh
 RUN chmod 700 /home/ubuntu/.ssh
 RUN chown ubuntu:ubuntu /home/ubuntu/.ssh
