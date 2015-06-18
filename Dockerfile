@@ -12,8 +12,6 @@ RUN mkdir -p /var/log/supervisor
 RUN useradd ubuntu -d /home/ubuntu -m -U
 RUN chown -R ubuntu:ubuntu /home/ubuntu
 RUN sudo adduser ubuntu sudo
-USER ubuntu
-WORKDIR /home/ubuntu
 
 #VOLUME ["/var/www"]
 RUN mkdir -p /var/www
