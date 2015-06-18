@@ -35,5 +35,5 @@ RUN sed -ri 's/^PermitRootLogin.*$/PermitRootLogin yes/g' /etc/ssh/sshd_config
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD run /usr/local/bin/
 RUN chmod +x /usr/local/bin/run
-EXPOSE 22 80
+EXPOSE 80 22
 CMD ["/usr/local/bin/run"]
