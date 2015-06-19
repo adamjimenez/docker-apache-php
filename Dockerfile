@@ -16,8 +16,7 @@ RUN chown -R ubuntu:ubuntu /home/ubuntu
 RUN echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/ubuntu
 RUN chmod 0440 /etc/sudoers.d/ubuntu
 
-#VOLUME ["/var/www"]
-RUN mkdir -p /var/www
+RUN mkdir -p /home/ubuntu/workspace
 RUN chown -R ubuntu:ubuntu /home/ubuntu
 
 RUN mkdir -p /home/ubuntu/.ssh
