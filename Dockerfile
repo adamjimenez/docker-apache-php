@@ -5,6 +5,8 @@ MAINTAINER Adam Jimenez <adam.jimenez@gmail.com>
 RUN apt-get update
 RUN apt-get upgrade -y
 
+#might need this
+#RUN export DEBIAN_FRONTEND=noninteractive
 RUN apt-get install -y openssh-server apache2 supervisor php5 php5-cli libapache2-mod-php5 php5-gd php5-json php5-ldap php5-mysql php5-pgsql
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
@@ -17,6 +19,8 @@ RUN echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/ubuntu
 RUN chmod 0440 /etc/sudoers.d/ubuntu
 
 RUN mkdir -p /home/ubuntu/workspace
+ADD default_readme.md /home/ubuntu/README.md
+ADD default_index.html /home/ubuntu/index.html
 RUN chown -R ubuntu:ubuntu /home/ubuntu
 
 RUN mkdir -p /home/ubuntu/.ssh
