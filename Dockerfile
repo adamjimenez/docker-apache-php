@@ -19,8 +19,8 @@ RUN echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/ubuntu
 RUN chmod 0440 /etc/sudoers.d/ubuntu
 
 RUN mkdir -p /home/ubuntu/workspace
-ADD default_readme.md /home/ubuntu/README.md
-ADD default_index.html /home/ubuntu/index.html
+ADD default_readme.md /home/ubuntu/workspace/README.md
+ADD default_index.html /home/ubuntu/workspace/index.html
 RUN chown -R ubuntu:ubuntu /home/ubuntu
 
 RUN mkdir -p /home/ubuntu/.ssh
