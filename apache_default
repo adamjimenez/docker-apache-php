@@ -9,9 +9,9 @@
     #ServerName www.example.com
 
     ServerAdmin webmaster@localhost
-    DocumentRoot /var/www
+    DocumentRoot /home/ubuntu/workspace
 
-    <Directory /var/www>
+    <Directory /home/ubuntu/workspace>
         AllowOverride All
         Require all granted
     </Directory>
