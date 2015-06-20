@@ -12,8 +12,8 @@ RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 
 # mysql config
-ADD my.cnf /etc/mysql/conf.d/my.cnf
-RUN chmod 664 /etc/mysql/conf.d/my.cnf
+#ADD my.cnf /etc/mysql/conf.d/my.cnf
+#RUN chmod 664 /etc/mysql/conf.d/my.cnf
 
 RUN useradd ubuntu -d /home/ubuntu -m -U
 RUN chown -R ubuntu:ubuntu /home/ubuntu
