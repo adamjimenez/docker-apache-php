@@ -7,7 +7,9 @@ RUN apt-get upgrade -y
 
 #might need this
 #RUN export DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get install -y openssh-server apache2 supervisor php5 php5-cli libapache2-mod-php5 php5-gd php5-json php5-ldap php5-mysql php5-pgsql mariadb-server
+
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 
@@ -43,5 +45,9 @@ RUN sed -ri 's/^PermitRootLogin.*$/PermitRootLogin yes/g' /etc/ssh/sshd_config
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD run /usr/local/bin/
 RUN chmod +x /usr/local/bin/run
-EXPOSE 80 22
+
+# Define mountable directories.
+VOLUME ["/etc/mysql", "/var/lib/mysql", "/home/ubuntu/workspace"]
+
 CMD ["/usr/local/bin/run"]
+EXPOSE 80 22
