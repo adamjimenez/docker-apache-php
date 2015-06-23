@@ -10,10 +10,11 @@ echo "$SERVER_KEY" > /home/ubuntu/.ssh/authorized_keys
 chown -R ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
 chmod 700 /home/ubuntu/.ssh/authorized_keys
 
-if [ -n $GIT_URL ]; then
+if [ -n "$GIT_URL" ]; then
   # Clone the conf files into the docker container
   rm -f /home/ubuntu/workspace/*
   git clone $GIT_URL /home/ubuntu/workspace
+  chown -R ubuntu:ubuntu /home/ubuntu/workspace
 fi
 
 exec supervisord -n
