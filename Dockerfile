@@ -24,10 +24,7 @@ RUN chown -R ubuntu:ubuntu /home/ubuntu
 RUN echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/ubuntu
 RUN chmod 0440 /etc/sudoers.d/ubuntu
 
-# Define mountable directories.
-VOLUME ["/etc/mysql", "/var/lib/mysql", "/home/ubuntu/workspace"]
-
-#RUN mkdir -p /home/ubuntu/workspace
+RUN mkdir -p /home/ubuntu/workspace
 ADD bashrc /home/ubuntu/.bashrc
 ADD default_readme.md /home/ubuntu/workspace/README.md
 ADD default_index.html /home/ubuntu/workspace/index.html
@@ -48,6 +45,9 @@ RUN sed -ri 's/^PermitRootLogin.*$/PermitRootLogin yes/g' /etc/ssh/sshd_config
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD run /usr/local/bin/
 RUN chmod +x /usr/local/bin/run
+
+# Define mountable directories.
+VOLUME ["/etc/mysql", "/var/lib/mysql", "/home/ubuntu/workspace"]
 
 CMD ["/usr/local/bin/run"]
 EXPOSE 80 22
