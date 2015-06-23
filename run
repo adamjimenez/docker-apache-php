@@ -12,7 +12,8 @@ chmod 700 /home/ubuntu/.ssh/authorized_keys
 
 if [ -n $GIT_URL ]; then
   # Clone the conf files into the docker container
-  git clone $GIT_URL /home/ubuntu/workspace
+  rm -f /home/ubuntu/workspace/*
+  git clone $GIT_URL /home/ubuntu/workspace .
 fi
 
 exec supervisord -n
