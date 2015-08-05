@@ -32,7 +32,7 @@ RUN chown -R ubuntu:ubuntu /home/ubuntu
 
 RUN mkdir -p /home/ubuntu/.ssh
 ADD ssh_config /home/ubuntu/.ssh/config
-RUN chown -r ubuntu:ubuntu /home/ubuntu/.ssh
+RUN chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 RUN chmod -r 700 /home/ubuntu/.ssh
 
 ADD apache_default /etc/apache2/sites-available/000-default.conf
