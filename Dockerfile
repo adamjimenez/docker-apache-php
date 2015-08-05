@@ -8,7 +8,7 @@ RUN apt-get upgrade -y
 #might need this
 #RUN export DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get install -y openssh-server apache2 supervisor php5 php5-cli libapache2-mod-php5 php5-gd php5-json php5-ldap php5-mysql mariadb-server nano git libreadline6 libreadline6-dev
+RUN apt-get install -y openssh-server apache2 supervisor php5 php5-cli libapache2-mod-php5 php5-gd php5-json php5-ldap php5-mysql mariadb-server nano git
 
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
@@ -17,7 +17,7 @@ RUN mkdir -p /var/log/supervisor
 #ADD my.cnf /etc/mysql/conf.d/my.cnf
 #RUN chmod 664 /etc/mysql/conf.d/my.cnf
 
-RUN useradd ubuntu -d /home/ubuntu -m -U
+RUN useradd ubuntu -d /home/ubuntu -s /bin/bash -m -U
 RUN chown -R ubuntu:ubuntu /home/ubuntu
 #RUN sudo adduser ubuntu sudo
 #RUN echo ubuntu:ubuntu | chpasswd
