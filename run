@@ -21,6 +21,9 @@ chmod 700 /home/ubuntu/.ssh/id_rsa
 
 sed -i "s/{\$HOSTNAME}/$HOSTNAME/g" /home/ubuntu/workspace/README.md
 
+git config --global user.email "$USER_EMAIL"                                                                                                                                                                                                                                                                             
+git config --global user.name "$USER_NAME"      
+
 if [ -n "$GIT_URL" ]; then
   # Clone the conf files into the docker container
   rm -f /home/ubuntu/workspace/*
