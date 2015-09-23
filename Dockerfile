@@ -36,6 +36,7 @@ RUN chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 RUN chmod -R 700 /home/ubuntu/.ssh
 
 ADD apache_default /etc/apache2/sites-available/000-default.conf
+ADD apache_opt.conf /etc/apache2/conf-enabled/optimise.conf
 RUN a2enmod rewrite
 RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/apache2/php.ini
 RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/cli/php.ini
