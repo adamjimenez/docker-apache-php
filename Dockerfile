@@ -8,7 +8,7 @@ RUN apt-get upgrade -y
 #might need this
 #RUN export DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get install -y openssh-server apache2 supervisor php5 php5-cli libapache2-mod-php5 php5-gd php5-json php5-ldap php5-mysql mariadb-server nano git curl
+RUN apt-get install -y openssh-server apache2 supervisor php5 php5-cli libapache2-mod-php5 php5-gd php5-json php5-ldap php5-mysql mariadb-server nano git curl php5-curl
 
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
